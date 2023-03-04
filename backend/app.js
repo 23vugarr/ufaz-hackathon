@@ -84,6 +84,7 @@ app.get('/get_balance_azn', (req, res) => {
 });
 
 
+
 app.get('/*', (req, res) => {
     res.send('Hello World');
 });
