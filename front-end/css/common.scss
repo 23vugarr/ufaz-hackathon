@@ -1,0 +1,586 @@
+@use "utils" as *;
+
+$color_type_0: rgb(0, 0, 0);
+$color_type_1: rgb(161, 10, 10);
+$color_type_2: rgb(217, 217, 217);
+$color_type_3: rgb(23, 85, 2);
+$color_type_4: rgb(255, 255, 255);
+$color_type_5: rgb(49, 161, 10);
+$color_type_6: rgb(54, 17, 84);
+$color_type_7: rgb(78, 212, 30);
+$color_type_8: rgb(80, 23, 126);
+$color_type_9: rgba(116, 62, 135, 0.498);
+$color_type_10: rgba(95, 39, 121, 0.498);
+
+$border_radius_type_0: 10px 10px 10px 10px;
+$border_radius_type_1: 11px 11px 11px 11px;
+$border_radius_type_2: 12px 12px 12px 12px;
+$border_radius_type_3: 18px 18px 18px 18px;
+
+$font_type_0: 400 44px/1.18 "Work Sans", Helvetica, Arial, serif;
+$font_type_1: 400 36px/1.16 "Work Sans", Helvetica, Arial, serif;
+$font_type_2: 400 24px/1.16 "Work Sans", Helvetica, Arial, serif;
+$font_type_3: 600 24px/1.16 "Work Sans", Helvetica, Arial, serif;
+$font_type_4: 600 22px/1.18 "Work Sans", Helvetica, Arial, serif;
+$font_type_5: 500 22px/1.18 "Work Sans", Helvetica, Arial, serif;
+$font_type_6: 700 22px/1.18 "Work Sans", Helvetica, Arial, serif;
+
+.root {
+  @include flex-column;
+  background-color: $color_type_4;
+  position: relative;
+  overflow: hidden;
+  min-height: 1031px;
+}
+.box {
+  @include flex-column;
+  background-color: $color_type_4;
+  width: 1722px;
+  height: 1031px;
+  position: relative;
+  overflow: hidden;
+  min-width: 1722px;
+}
+.cover {
+  width: 1729px;
+  height: 1047px;
+  aspect-ratio: 1.65;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: absolute;
+  top: -1px;
+  left: -7px;
+}
+.rect {
+  background-color: $color_type_8;
+  border-radius: $border_radius_type_0;
+  outline: 1px solid rgb(0, 0, 0);
+  outline-offset: -1px;
+  width: 493px;
+  height: 626px;
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247);
+  position: absolute;
+  top: 324px;
+  left: 1167px;
+  min-width: 493px;
+}
+.image {
+  width: 321px;
+  height: auto;
+  aspect-ratio: 3.15;
+  vertical-align: top;
+  object-fit: cover;
+  object-position: center center;
+  position: absolute;
+  top: 44px;
+  left: 15px;
+  min-width: 321px;
+}
+.medium_title {
+  @include font-face($font_type_2, $color_type_0, 0px);
+  width: 100%;
+  height: 100%;
+}
+.medium_title1 {
+  font: $font_type_2;
+  color: $color_type_0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24705882352941178);
+  letter-spacing: 0px;
+  width: 100%;
+  height: 100%;
+}
+.medium_title2 {
+  font: $font_type_2;
+  color: $color_type_0;
+  text-decoration: underline;
+  letter-spacing: 0px;
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 95px;
+  left: 1201px;
+  min-width: 0px;
+}
+.rect1 {
+  background-color: $color_type_2;
+  width: 470px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 400px;
+  left: 644px;
+  min-width: 470px;
+}
+.rect2 {
+  background-color: $color_type_9;
+  width: 470px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 448px;
+  left: 644px;
+  min-width: 470px;
+}
+.rect11 {
+  background-color: $color_type_2;
+  width: 470px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 495px;
+  left: 642px;
+  min-width: 470px;
+}
+.rect21 {
+  background-color: $color_type_9;
+  width: 470px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 543px;
+  left: 642px;
+  min-width: 470px;
+}
+.subtitle {
+  @include font-face($font_type_4, $color_type_4, 0px);
+  width: 100%;
+  height: 100%;
+}
+.subtitle1 {
+  @include font-face($font_type_4, $color_type_4, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 409px;
+  left: 1192px;
+  min-width: 0px;
+}
+.rect3 {
+  background-color: $color_type_2;
+  width: 493px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 447px;
+  left: 1167px;
+  min-width: 493px;
+}
+.subtitle11 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: 100%;
+  height: 100%;
+}
+.subtitle12 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 825px;
+  left: 1189px;
+  min-width: 0px;
+}
+.subtitle13 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 780px;
+  left: 1189px;
+  min-width: 0px;
+}
+.subtitle14 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 915px;
+  left: 1189px;
+  min-width: 0px;
+}
+.subtitle15 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 876px;
+  left: 1189px;
+  min-width: 0px;
+}
+.subtitle16 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 730px;
+  left: 1189px;
+  min-width: 0px;
+}
+.subtitle17 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 685px;
+  left: 1190px;
+  min-width: 0px;
+}
+.subtitle18 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 640px;
+  left: 1190px;
+  min-width: 0px;
+}
+.subtitle19 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 593px;
+  left: 1189px;
+  min-width: 0px;
+}
+.subtitle110 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 549px;
+  left: 1192px;
+  min-width: 0px;
+}
+.subtitle111 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 500px;
+  left: 1192px;
+  min-width: 0px;
+}
+.subtitle112 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 455px;
+  left: 1190px;
+  min-width: 0px;
+}
+.subtitle113 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 918px;
+  left: 1374px;
+  min-width: 0px;
+}
+.rect31 {
+  background-color: $color_type_2;
+  width: 493px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 538px;
+  left: 1167px;
+  min-width: 493px;
+}
+.rect32 {
+  background-color: $color_type_2;
+  width: 493px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 632px;
+  left: 1167px;
+  min-width: 493px;
+}
+.rect33 {
+  background-color: $color_type_2;
+  width: 493px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 726px;
+  left: 1167px;
+  min-width: 493px;
+}
+.rect34 {
+  background-color: $color_type_2;
+  width: 493px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 820px;
+  left: 1167px;
+  min-width: 493px;
+}
+.rect4 {
+  background-color: $color_type_2;
+  width: 399px;
+  height: 36px;
+  opacity: 0.5;
+  position: absolute;
+  top: 913px;
+  left: 1170px;
+  min-width: 399px;
+}
+.rect5 {
+  background-color: $color_type_10;
+  border-radius: $border_radius_type_3;
+  width: 493px;
+  height: 76px;
+  position: absolute;
+  top: 324px;
+  left: 1167px;
+  min-width: 493px;
+}
+.rect6 {
+  background-color: $color_type_10;
+  border-radius: $border_radius_type_1;
+  width: 475px;
+  height: 76px;
+  position: absolute;
+  top: 324px;
+  left: 644px;
+  min-width: 475px;
+}
+.hero_title {
+  @include font-face($font_type_0, $color_type_4, 0px);
+  width: 100%;
+  height: 100%;
+}
+.rect7 {
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_0;
+  outline: 1px solid rgb(0, 0, 0);
+  outline-offset: -1px;
+  width: 475px;
+  height: 626px;
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247);
+  position: absolute;
+  top: 324px;
+  left: 644px;
+  min-width: 475px;
+}
+.rect8 {
+  background-color: $color_type_2;
+  width: 475px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 589px;
+  left: 644px;
+  min-width: 475px;
+}
+.rect9 {
+  background-color: $color_type_9;
+  width: 475px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 637px;
+  left: 644px;
+  min-width: 475px;
+}
+.rect81 {
+  background-color: $color_type_2;
+  width: 475px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 684px;
+  left: 644px;
+  min-width: 475px;
+}
+.rect91 {
+  background-color: $color_type_9;
+  width: 475px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 732px;
+  left: 644px;
+  min-width: 475px;
+}
+.rect10 {
+  background-color: $color_type_2;
+  width: 474px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 779px;
+  left: 647px;
+  min-width: 474px;
+}
+.rect82 {
+  background-color: $color_type_2;
+  width: 475px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 873px;
+  left: 644px;
+  min-width: 475px;
+}
+.rect111 {
+  background-color: $color_type_9;
+  width: 474px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 827px;
+  left: 647px;
+  min-width: 474px;
+}
+.rect12 {
+  background-color: $color_type_6;
+  border-radius: $border_radius_type_2;
+  width: 504px;
+  height: 623px;
+  opacity: 0.5;
+  position: absolute;
+  top: 324px;
+  left: 52px;
+  min-width: 504px;
+}
+.subtitle2 {
+  @include font-face($font_type_6, $color_type_3, 0px);
+  width: 100%;
+  height: 100%;
+}
+.rect13 {
+  background-color: $color_type_2;
+  width: 507px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 398px;
+  left: 52px;
+  min-width: 507px;
+}
+.rect14 {
+  background-color: $color_type_9;
+  width: 507px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 689px;
+  left: 52px;
+  min-width: 507px;
+}
+.rect15 {
+  background-color: $color_type_2;
+  width: 507px;
+  height: 45px;
+  opacity: 0.5;
+  position: absolute;
+  top: 490px;
+  left: 49px;
+  min-width: 507px;
+}
+.rect16 {
+  background-color: $color_type_2;
+  width: 507px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 588px;
+  left: 49px;
+  min-width: 507px;
+}
+.rect131 {
+  background-color: $color_type_2;
+  width: 507px;
+  height: 47px;
+  opacity: 0.5;
+  position: absolute;
+  top: 680px;
+  left: 51px;
+  min-width: 507px;
+}
+.rect151 {
+  background-color: $color_type_2;
+  width: 507px;
+  height: 45px;
+  opacity: 0.5;
+  position: absolute;
+  top: 780px;
+  left: 51px;
+  min-width: 507px;
+}
+.subtitle3 {
+  @include font-face($font_type_6, $color_type_5, 0px);
+  width: 100%;
+  height: 100%;
+}
+.subtitle4 {
+  @include font-face($font_type_6, $color_type_1, 0px);
+  width: 100%;
+  height: 100%;
+}
+.subtitle5 {
+  @include font-face($font_type_6, $color_type_7, 0px);
+  width: 100%;
+  height: 100%;
+}
+.subtitle114 {
+  @include font-face($font_type_5, $color_type_0, 0px);
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  top: 792px;
+  left: 304px;
+  min-width: 0px;
+}
+.rect17 {
+  background-color: $color_type_9;
+  width: 507px;
+  height: 45px;
+  opacity: 0.5;
+  position: absolute;
+  top: 776px;
+  left: 48px;
+  min-width: 507px;
+}
+.rect18 {
+  background-color: $color_type_2;
+  width: 459px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 827px;
+  left: 38px;
+  min-width: 459px;
+}
+.rect19 {
+  background-color: $color_type_9;
+  width: 507px;
+  height: 46px;
+  opacity: 0.5;
+  position: absolute;
+  top: 870px;
+  left: 53px;
+  min-width: 507px;
+}
+.big_title {
+  @include font-face($font_type_1, $color_type_4, 0px);
+  width: 100%;
+  height: 100%;
+}
+.subtitle6 {
+  @include font-face($font_type_5, $color_type_4, 0px);
+  width: 100%;
+  height: 100%;
+}
+.medium_title11 {
+  @include font-face($font_type_3, $color_type_4, 0px);
+  width: 100%;
+  height: 100%;
+}
