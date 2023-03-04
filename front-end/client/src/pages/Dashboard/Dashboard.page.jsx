@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import DashboardContainer from "./Dashboard.styles";
 import Transfer from "../../components/Transfer/Transfer.component";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [toggle, setToggle] = useState(false);
   const toggleTransfer = () => {
     setToggle(!toggle);
   };
+  const navigate = useNavigate();
   return (
     <DashboardContainer>
       {toggle && <Transfer toggle={toggleTransfer} />}
@@ -24,7 +26,12 @@ const Dashboard = () => {
               <h4 className="text-center text-light">~</h4>
               <h4 className="text-center text-light fw-bold">5.56 AZN</h4>
               <div className="footer py-4 mt-4 d-flex justify-content-around">
-                <button className="btn btn-primary">Trade Now</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate("/trade")}
+                >
+                  Trade Now
+                </button>
                 <button className="btn btn-primary" onClick={toggleTransfer}>
                   Transfer
                 </button>
