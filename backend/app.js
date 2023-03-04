@@ -75,6 +75,13 @@ app.get('/tokens/:token', (req, res) => {
     });
 });
 
+app.get('/get_balance', (req, res) => {
+    res.send(1.05)
+});
+
+app.get('/get_balance_azn', (req, res) => {
+    res.send(5)
+});
 
 
 app.get('/*', (req, res) => {
