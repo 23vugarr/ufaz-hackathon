@@ -47,6 +47,7 @@ app.get('/tokens_gainers', (req, res) => {
     });
 });
 
+// token_id: bitcoin, ethereum, etc.
 app.get('/token/:token_id/price_history', (req, res) => {
     const token_id = req.params.token_id;
     const URL = "https://api.coingecko.com/api/v3/coins/" + token_id + "/market_chart";
@@ -65,6 +66,7 @@ app.get('/token/:token_id/price_history', (req, res) => {
     });
 });
 
+// btc, eth or etc.
 app.get('/tokens/:token', (req, res) => {
     const token = req.params.token;
     fetchData().then(data => {
