@@ -6,7 +6,7 @@ import { Link, useHref } from "react-router-dom";
 const Navbar = () => {
   const href = useHref();
   return (
-    <NavbarContainer className="sticky-top">
+    <NavbarContainer>
       <div className="logo">
         <img src={logo} alt="logo" className="img-fluid" />
       </div>

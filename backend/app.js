@@ -3,6 +3,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
+const cors = require("cors");
+app.use(cors());
+
 app.use(bodyParser.json());
 
 
@@ -42,7 +45,7 @@ app.get('/top_tokens', (req, res) => {
 
 app.get('/tokens_gainers', (req, res) => {
     fetchData().then(data => {
-        data = data.filter(item => item.price_change_24h > 0);
+        data = data.sort((a, b) => b.price_change_24h - a.price_change_24h);
         res.send(data);
     });
 });
@@ -89,4 +92,4 @@ app.get('/*', (req, res) => {
     res.send('Hello World');
 });
 
-app.listen(3000, () => console.log('Listening on port 3000!'));
+app.listen(1337, () => console.log('Listening on port 1337!'));
