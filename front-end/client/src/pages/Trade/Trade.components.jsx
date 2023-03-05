@@ -3,6 +3,25 @@ import TradeContainer from "./Trade.styles";
 import { TbArrowsUpDown } from "react-icons/tb";
 
 const Trade = () => {
+
+  const [data, setData] = React.useState(null);
+  React.useEffect(() => {
+    fetch("http://localhost:1337/top_tokens")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+
+  const [scoin, setScoin] = React.useState(null);
+  const handleSelect = (e) => {
+    setScoin(e.target.value);
+  };
+  console.log(scoin, "hi");
+
+  const [amount, setAmount] = React.useState(null);
+  const handleAmount = (e) => {
+    setAmount(e.target.value);
+  };
+
   return (
     <TradeContainer>
       <div className="container py-5">
@@ -13,6 +32,8 @@ const Trade = () => {
               <div className="d-flex justify-content-center align-items-center my-3">
                 <input
                   type="number"
+                  onChange={handleAmount}
+                  value={amount && amount}
                   className="form-control"
                   placeholder="Enter the amount"
                   aria-label="Enter the amount"
@@ -27,7 +48,8 @@ const Trade = () => {
               <div className="d-flex justify-content-center align-items-center my-3">
                 <input
                   type="text"
-                  value={0}
+
+                  value={scoin && scoin * amount * 1.05}
                   style={{
                     textAlign: "center",
                     fontSize: "2rem",
@@ -35,11 +57,17 @@ const Trade = () => {
                     padding: "0.5rem",
                   }}
                   className="form-control"
-                  placeholder="Enter the amount"
                   aria-label="Enter the amount"
                   aria-describedby="basic-addon2"
                   disabled={true}
                 />
+              </div>
+
+              <div className="d-flex justify-content-center align-items-center my-3">
+              <select className="form-select" aria-label="Default select example" onChange={handleSelect}>
+                  <option selected>Select the coin to trade with</option>
+                  {data && data.map((coin) => <option value={coin.current_price}>{coin.name}</option>)}
+                </select>
               </div>
             </div>
           </div>

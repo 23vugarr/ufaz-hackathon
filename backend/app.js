@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-var URL = "https://api.coingecko.com/api/v3/coins/markets"
+var URL = "https://api.coingecko.com/api/v3/coins/markets/"
 var PARAMS = {
     "vs_currency": "usd", 
     "per_page": 200, 
@@ -79,14 +79,26 @@ app.get('/tokens/:token', (req, res) => {
 });
 
 app.get('/get_balance', (req, res) => {
-    res.send(1.05)
+    res.send([1.05])
 });
 
 app.get('/get_balance_azn', (req, res) => {
-    res.send(5)
+    res.send([5])
 });
 
 
+app.get('/transfer', (req, res) => {
+    res.send(1.05);
+});
+
+app.post('/transfer', (req, res) => {
+    // connect testnet wallet and send money
+    res.sendStatus(200);
+});
+
+app.get('/trade', (req, res) => {
+    res.send(1.05);
+});
 
 app.get('/*', (req, res) => {
     res.send('Hello World');
