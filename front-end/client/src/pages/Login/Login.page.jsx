@@ -9,14 +9,32 @@ const Login = () => {
     password: "",
   };
 
-  const users = [
-    {
-      username: "test",
-      password: "12345",
-    },
-  ];
-
   const [form, setForm] = React.useState(initialFormState);
+
+  const checkUser = async (name, password) => {
+    try {
+      const response = await fetch(`http://localhost:1337/login?name=${name}&password=${password}`);
+      const user = await response.json();
+      return user ? true : false;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.username || !form.password) return;
+    if (await checkUser(form.username, form.password)) {
+      setSessionToLocalStorage({
+        username: form.username,
+      });
+      navigate("/");
+    } else {
+      alert("Invalid username or password");
+    }
+    setForm(initialFormState);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,31 +42,8 @@ const Login = () => {
     setForm({ ...form, [name]: value });
   };
 
-  
-  const checkUser = (name, password) => {
-    const user = users.find((user) => user.username === name);
-    if (user && user.password === password) {
-      return true;
-    }
-    return false;
-  };
-
   const setSessionToLocalStorage = (user) => {
     localStorage.setItem("session", JSON.stringify(user));
-  };
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!form.username || !form.password) return;
-    if (checkUser(form.username, form.password)) {
-      setSessionToLocalStorage({
-        username: form.username,
-        password: form.password,
-      });
-      navigate("/");
-    }
-    setForm(initialFormState);
   };
 
   return (
@@ -87,6 +82,12 @@ const Login = () => {
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
+            <p className="mt-3">
+              Test user:
+              <br />
+              <span><strong>username:</strong> admin   |      <strong>password:</strong>admin</span>
+              <br />
+            </p>
           </form>
         </div>
       </div>
