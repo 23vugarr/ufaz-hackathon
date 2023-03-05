@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashboardContainer from "./Dashboard.styles";
 import Transfer from "../../components/Transfer/Transfer.component";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [toggle, setToggle] = useState(false);
+  const [userName, setUserName] = useState("");
+
   const toggleTransfer = () => {
     setToggle(!toggle);
   };
+  const navigate = useNavigate();
+
+  const checkSession = () => {
+    const session = JSON.parse(localStorage.getItem("session"));
+    if (!session) {
+      navigate("/login");
+    }
+    setUserName(session.username);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("session");
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    checkSession();
+  }, []);
 
   const [data_gainers, setDataGainers] = React.useState(null);
   React.useEffect(() => {
@@ -32,13 +52,12 @@ const Dashboard = () => {
 
   const [azn_balance, setAznBalance] = React.useState(null);
   React.useEffect(() => {
-    fetch("http://localhost:1337/get_balance_azn")
+    fetch("http://localhost:1337/get_balance")
       .then((res) => res.json())    
       .then((azn_balance) => setAznBalance(azn_balance));
   }, []);
 
 
-  const navigate = useNavigate();
   return (
     <DashboardContainer>
       {toggle && <Transfer toggle={toggleTransfer} />}
@@ -46,7 +65,15 @@ const Dashboard = () => {
         <div className="row">
           <div className="col-4">
             <div className="user-info">
-              <h1 className="fw-bold">Welcome, Murad</h1>
+              <h1 className="fw-bold">Welcome, {userName}</h1>
+              <div className="d-flex justify-content-center">
+                <button
+                  className="btn btn-primary mb-3 logout"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
             <div className="user-balance mt-3 pt-5">
               <h3 className="text-center fw-bold  text-light mb-3">
@@ -54,7 +81,7 @@ const Dashboard = () => {
               </h3>
               <h4 className="text-center text-light">{balance} Azercell coin</h4>
               <h4 className="text-center text-light">~</h4>
-              <h4 className="text-center text-light fw-bold">{azn_balance} AZN</h4>
+              <h4 className="text-center text-light fw-bold">{5.56} AZN</h4>
               <div className="footer py-4 mt-4 d-flex justify-content-around">
                 <button
                   className="btn btn-primary"

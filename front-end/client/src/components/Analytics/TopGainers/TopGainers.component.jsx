@@ -14,7 +14,6 @@ const Details = ({ id, toggle, data1 }) => {
       .then(data => setPrediction(data));
   }, [name]);
 
-  console.log(prediction);
 
   return (    
     <div>

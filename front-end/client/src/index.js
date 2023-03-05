@@ -7,12 +7,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard.page";
 import Trade from "./pages/Trade/Trade.components";
 import Analytics from "./pages/Analytics/Analytics.page";
+import Login from "./pages/Login/Login.page";
 
 const browserRouter = createBrowserRouter([
   {
+
     path: "/",
     element: <App />,
-    children: [
+    children: [ 
       {
         path: "/",
         element: <Dashboard />,
@@ -24,6 +26,10 @@ const browserRouter = createBrowserRouter([
       {
         path: "/analytics",
         element: <Analytics />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

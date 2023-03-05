@@ -21,6 +21,9 @@ const Navbar = () => {
           <li className={`${href === "/trade" && "active"}`}>
             <Link to="/trade">Trade</Link>
           </li>
+          <li className={`${href === "/login" && "active"}`}>
+            <Link to="/login">Login</Link>
+          </li>
         </ul>
       </div>
     </NavbarContainer>

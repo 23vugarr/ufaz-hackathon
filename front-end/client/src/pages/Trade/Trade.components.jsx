@@ -1,10 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
 import TradeContainer from "./Trade.styles";
 import { TbArrowsUpDown } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
+
 
 const Trade = () => {
+  const navigate = useNavigate();
+
+  const checkSession = () => {
+    const session = JSON.parse(localStorage.getItem("session"));
+    if (!session) {
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    checkSession();
+  }, []);
 
   const [data, setData] = React.useState(null);
+
   React.useEffect(() => {
     fetch("http://localhost:1337/top_tokens")
       .then((res) => res.json())
@@ -49,7 +64,7 @@ const Trade = () => {
                 <input
                   type="text"
 
-                  value={scoin && scoin * amount * 1.05}
+                  value={scoin && amount / (12.05 * scoin)}
                   style={{
                     textAlign: "center",
                     fontSize: "2rem",

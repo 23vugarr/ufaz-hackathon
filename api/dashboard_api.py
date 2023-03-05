@@ -99,11 +99,3 @@ async def read_item(token_id: str, days: int = 20):
         return {"prediction": prediction.tolist()}   
     except:
         return {"prediction": [0, 0, 0]}
-
-
-
-# @app.get("/top_balances")
-# async def read_root():
-#     URL = f'https://api.etherscan.io/api?module=account&action=tokentx&address={address}&startblock=0&endblock=99999999&sort=desc&apikey={api_key}'
-
-#     return {"top_balances": top_balances}

@@ -39,6 +39,16 @@ const TopAzGainers = () => {
   const toggle = () => {
     setShowDetails(!showDetails);
   };
+
+  const [data, setData] = React.useState([['12355241...', '0x1a4c1d3d7...'], ['5006581...', '0xf89ebfa5538...'], ['236748...', '0xf708e154069...'], ['3324...', '0xbd2b92bf7b3...'], ['23747...', 'oxb2b92bf7b...']]);
+  React.useEffect(() => {
+    fetch("https://localhost:1337/top_addresses")
+      .then((res) => {res.json(); console.log(res.json());})
+      .then((data) => setData(data));
+  }, []);
+
+  console.log(data);
+
   return (
     <TopAzGainersContainer>
       {showDetails ? (
@@ -57,36 +67,16 @@ const TopAzGainers = () => {
               </tr>
             </thead>
             <tbody>
-              <tr
-                onClick={() => {
-                  setId("0xfda5987db0a..");
+              {data && data.slice(0, 5).map((item) => (
+                <tr onClick={() => {
+                  setId(item.symbol);
                   toggle();
-                }}
-              >
-                <td className="address">0xfda5987db0a..</td>
-                <td className="balance">2456.8$</td>
-                <td className="change increment">18%</td>
-              </tr>
-              <tr
-                onClick={() => {
-                  setId("0xfda5987db0a..");
-                  toggle();
-                }}
-              >
-                <td className="address">0xfda5987db0a..</td>
-                <td className="balance">2456.8$</td>
-                <td className="change increment">18%</td>
-              </tr>
-              <tr
-                onClick={() => {
-                  setId("0xfda5987db0a..");
-                  toggle();
-                }}
-              >
-                <td className="address">0xfda5987db0a..</td>
-                <td className="balance">2456.8$</td>
-                <td className="change increment">18%</td>
-              </tr>
+                }}>
+                  <td className="address">{item[1]}</td>
+                  <td className="balance">{item[0]}</td>
+                  <td className="change increment">23%</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
