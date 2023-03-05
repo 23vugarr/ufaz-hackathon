@@ -15,7 +15,7 @@ const Trade = () => {
   const handleSelect = (e) => {
     setScoin(e.target.value);
   };
-  console.log(scoin, "hi");
+  console.log(scoin);
 
   const [amount, setAmount] = React.useState(null);
   const handleAmount = (e) => {

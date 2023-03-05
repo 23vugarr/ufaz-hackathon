@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   const [data_top, setDataTop] = React.useState(null);
   React.useEffect(() => {
-    fetch("http://localhost:1337/tokens_gainers")
+    fetch("http://localhost:1337/top_tokens")
       .then((res) => res.json())
       .then((data_top) => setDataTop(data_top));
   }, []);
@@ -145,7 +145,6 @@ const Dashboard = () => {
                   <tr>
                     <td className="address">{item.name}</td>
                     <td className="balance">{item.current_price}</td>
-                    <td className="change increment">{item.price_change_24h}%</td>
                   </tr>
               ))}
 

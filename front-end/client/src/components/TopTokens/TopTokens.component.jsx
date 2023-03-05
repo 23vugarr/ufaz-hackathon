@@ -5,6 +5,14 @@ import { ImCross } from "react-icons/im";
 const Details = ({ id, toggle, data1 }) => {
 
   const data2 = data1.filter((item) => item.symbol === id)[0];
+  var name = data1.filter((item) => item.symbol === id)[0].name;
+  name = name.toLowerCase();
+  const [prediction, setPrediction] = React.useState([0,0,0]);
+  React.useEffect(() => {
+    fetch(`http://localhost:1337/tokens/${name}/price_prediction`)
+      .then(response => response.json())
+      .then(data => setPrediction(data));
+  }, [name]);
 
   return (    
     <div>
@@ -25,6 +33,30 @@ const Details = ({ id, toggle, data1 }) => {
         <div className="col-4 d-flex flex-column align-items-center">
           <h6>Change 24h</h6>
           <div className="box mt-2">{data2.price_change_24h.toFixed(2)}%</div>
+        </div>
+        <div className="col-4 d-flex flex-column align-items-center">
+          <h6>M Cap Rank</h6>
+          <div className="box mt-2">{data2.market_cap_rank.toFixed()}</div>
+        </div>
+        <div className="col-4 d-flex flex-column align-items-center">
+          <h6>Total Volume</h6>
+          <div className="box mt-2">{data2.total_volume.toFixed(2)}</div>
+        </div>
+        <div className="col-4 d-flex flex-column align-items-center">
+          <h6>Symbol</h6>
+          <div className="box mt-2">{data2.symbol}</div>
+        </div>
+        <div className="col-4 d-flex flex-column align-items-center">
+          <h6>Predicted next day price:</h6>
+          <div className="box mt-2">{prediction[0].toFixed(2)}</div>
+        </div>
+        <div className="col-4 d-flex flex-column align-items-center">
+          <h6>Predicted next 2 days' price</h6>
+          <div className="box mt-2">{prediction[1].toFixed(2)}</div>
+        </div>
+        <div className="col-4 d-flex flex-column align-items-center">
+          <h6>Predicted next 3 days' price</h6>
+          <div className="box mt-2">{prediction[2].toFixed(2)}</div>
         </div>
       </div>
     </div>

@@ -36,7 +36,6 @@ async function fetchData() {
 };
 
 
-
 app.get('/top_tokens', (req, res) => {
     fetchData().then(data => {
         res.send(data);
@@ -79,7 +78,7 @@ app.get('/tokens/:token', (req, res) => {
 });
 
 app.get('/get_balance', (req, res) => {
-    res.send([1.05])
+    res.send([1.06])
 });
 
 app.get('/get_balance_azn', (req, res) => {
@@ -100,8 +99,35 @@ app.get('/trade', (req, res) => {
     res.send(1.05);
 });
 
+app.get('/tokens/:token/price_prediction', (req, res) => {
+    url = "http://localhost:8080/tokens/" + req.params.token + "/price_prediction";
+    axios.get(url).then(response => {
+        console.log(response.data.prediction)
+        res.send(response.data.prediction);
+    });
+});
+
+
+// create a list
+var wallets = ["0xdd92062adf9f6edf528babe7f04804fe86424a74", "0xdf367477c5e596af88e8797c3cde8e28854cb79c", "0x1a4c1d3d766fa0f0c961a1c4da721a2a6bc5d920", "0xfa52387d626109c1b2c103ec85f8f8124a8d31b6", "0x4c0b801d56d7245ab67f0d7f4773456dd2c689dd", "0xf89ebfa55385f1aef401d5dc5ee761569e45874e", "0x7122db0ebe4eb9b434a9f2ffe6760bc03bfbd0e0", "0x5c6428181b9b34df8c1f2af7718f03cacc79d183", "0xbd2b92bf7b37e1e3e44b263b0901445485ee1578", "0xf708e1540697788fe5b02393398f80afc9b81783"]
+
+app.get('/top_addresses', (req, res) => {
+    api_key_wallets = 'APH4CYHTAGXCF1M2GZ4UJJ433CEW3T6QTY'
+    var result = []
+    for(i = 0; i < wallets.length; i++){
+        url = `https://api.etherscan.io/api?module=account&action=balance&address=${wallets[i]}&tag=latest&apikey=${api_key_wallets}`
+        axios.get(url).then(response => {
+            console.log(response.data.result, wallets[i])
+            result.push([response.data.result, wallets[i]])
+        });
+    }
+    // result = result.sort(function(a, b){return b-a});
+    res.send(result);
+});
+
+
 app.get('/*', (req, res) => {
-    res.send('Hello World');
+    res.send('404 error');
 });
 
 app.listen(1337, () => console.log('Listening on port 1337!'));
