@@ -8,9 +8,25 @@ const axios = require('axios');
 const cache = require('node-cache');
 const myCache = new cache();
 const cors = require("cors");
+const mysql = require('mysql2');
 
 app.use(cors());
 app.use(bodyParser.json());
+
+// initialize mysql
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'ufaz_hackathon'
+});
+
+db.connect(function(err) {
+    if (err) {
+        console.error('error connecting:');
+        return;
+    }
+});
 
 
 // fetch data from coingecko api
@@ -43,6 +59,27 @@ async function fetchData() {
 
 
 // routes
+
+app.get('/login', (req, res) => {
+    const name = req.query.name;
+    const password = req.query.password;
+    console.log(name, password)
+    const query = "SELECT * FROM users WHERE name = ? AND password = ?";
+    db.query(query, [name, password], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        if (result.length > 0) {
+            console.log(result)
+            res.send(result);
+        } else {
+            console.log('Wrong username/password combination!')
+            res.send();
+        }
+    });
+});
+
+
 app.get('/top_tokens', (req, res) => {
     fetchData().then(data => {
         res.send(data);
@@ -152,6 +189,7 @@ app.get('/top_addresses', (req, res) => {
         res.sendStatus(500);
     })
 });
+
 
 
 app.get('/*', (req, res) => {
